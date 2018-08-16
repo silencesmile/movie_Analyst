@@ -65,14 +65,10 @@ city_com = cityScores.agg(['mean', 'count'])
 citys = city_com.index
 city_mean = city_com["mean"].values
 city_count = city_com["count"].values
-print(city_count)
 
-city_score = []
-for score in city_mean:
-    score = round(score, 2)
-    city_score.append(score)
-
-print(citys, '\n', city_mean)
+# 对打分数据进行优化处理
+city_mean = np.array(city_mean)
+city_score = np.round(city_mean, 2)
 
 # 主城市打分柱状图
 bar = Bar("《一出好戏》部分城市评分", "猫眼均分")
